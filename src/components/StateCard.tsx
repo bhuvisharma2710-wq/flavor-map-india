@@ -1,5 +1,6 @@
+import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
-import type { StateItem } from "@/data/homeData";
+import type { StateItem } from "@/data/content";
 
 export function StateCard({ state }: { state: StateItem }) {
   return (
@@ -16,13 +17,14 @@ export function StateCard({ state }: { state: StateItem }) {
         <p className="eyebrow">{state.region}</p>
         <h3 className="mt-2 text-xl font-semibold text-foreground">{state.name}</h3>
         <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{state.description}</p>
-        <button
-          type="button"
+        <Link
+          to="/states/$stateId"
+          params={{ stateId: state.id }}
           className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-primary transition-colors hover:text-spice"
         >
-          Explore
+          Explore {state.name}
           <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
-        </button>
+        </Link>
       </div>
     </article>
   );
