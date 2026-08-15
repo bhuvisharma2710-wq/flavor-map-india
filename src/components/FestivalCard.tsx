@@ -1,5 +1,6 @@
+import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
-import type { FestivalItem } from "@/data/homeData";
+import type { FestivalItem } from "@/data/content";
 
 export function FestivalCard({ festival }: { festival: FestivalItem }) {
   return (
@@ -16,13 +17,14 @@ export function FestivalCard({ festival }: { festival: FestivalItem }) {
         <h3 className="text-lg font-semibold text-foreground">{festival.name}</h3>
         <p className="mt-1 text-xs font-medium text-accent">{festival.season}</p>
         <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{festival.description}</p>
-        <button
-          type="button"
+        <Link
+          to="/festivals/$festivalId"
+          params={{ festivalId: festival.id }}
           className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-primary transition-colors hover:text-spice"
         >
           Explore Recipes
           <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
-        </button>
+        </Link>
       </div>
     </article>
   );

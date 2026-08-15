@@ -1,13 +1,15 @@
 import { useState } from "react";
+import { Link } from "@tanstack/react-router";
 import { Menu, X, UtensilsCrossed } from "lucide-react";
 
 const navItems = [
-  { label: "Home", href: "#home", active: true },
-  { label: "Explore by State", href: "#states" },
-  { label: "Festivals", href: "#festivals" },
-  { label: "Ingredient Guide", href: "#ingredients" },
-  { label: "Search", href: "#search" },
-];
+  { label: "Home", to: "/" },
+  { label: "Explore by State", to: "/states" },
+  { label: "Recipes", to: "/recipes" },
+  { label: "Festivals", to: "/festivals" },
+  { label: "Ingredient Guide", to: "/ingredients" },
+  { label: "Search", to: "/search" },
+] as const;
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
@@ -15,28 +17,25 @@ export function Navbar() {
   return (
     <header className="sticky top-0 z-50 border-b border-border/70 bg-background/90 backdrop-blur">
       <nav className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
-        <a href="#home" className="flex items-center gap-2">
+        <Link to="/" className="flex items-center gap-2">
           <span className="flex size-9 items-center justify-center rounded-full bg-primary text-primary-foreground">
             <UtensilsCrossed className="size-4" />
           </span>
           <span className="font-display text-base font-semibold tracking-tight sm:text-lg">
             FLAVORMAP <span className="text-primary">INDIA</span>
           </span>
-        </a>
+        </Link>
 
-        <ul className="hidden items-center gap-7 lg:flex">
+        <ul className="hidden items-center gap-6 lg:flex">
           {navItems.map((item) => (
             <li key={item.label}>
-              <a
-                href={item.href}
-                className={
-                  item.active
-                    ? "border-b-2 border-primary pb-1 text-sm font-semibold text-foreground"
-                    : "text-sm text-muted-foreground transition-colors hover:text-primary"
-                }
+              <Link
+                to={item.to}
+                activeOptions={{ exact: item.to === "/" }}
+                className="text-sm text-muted-foreground transition-colors hover:text-primary data-[status=active]:border-b-2 data-[status=active]:border-primary data-[status=active]:pb-1 data-[status=active]:font-semibold data-[status=active]:text-foreground"
               >
                 {item.label}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
@@ -56,17 +55,14 @@ export function Navbar() {
         <ul className="space-y-1 border-t border-border bg-card px-4 py-3 lg:hidden">
           {navItems.map((item) => (
             <li key={item.label}>
-              <a
-                href={item.href}
+              <Link
+                to={item.to}
+                activeOptions={{ exact: item.to === "/" }}
                 onClick={() => setOpen(false)}
-                className={
-                  item.active
-                    ? "block rounded-md bg-secondary px-3 py-2 text-sm font-semibold text-secondary-foreground"
-                    : "block rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-muted"
-                }
+                className="block rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-muted data-[status=active]:bg-secondary data-[status=active]:font-semibold data-[status=active]:text-secondary-foreground"
               >
                 {item.label}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
