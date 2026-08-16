@@ -1,12 +1,15 @@
+import { Link } from "@tanstack/react-router";
 import { UtensilsCrossed } from "lucide-react";
 
 const footerLinks = [
-  { label: "Home", href: "#home" },
-  { label: "Explore by State", href: "#states" },
-  { label: "Festivals", href: "#festivals" },
-  { label: "Ingredient Guide", href: "#ingredients" },
-  { label: "Cooking Videos", href: "#videos" },
-];
+  { label: "Home", to: "/" },
+  { label: "Explore by State", to: "/states" },
+  { label: "Recipes", to: "/recipes" },
+  { label: "Festivals", to: "/festivals" },
+  { label: "Ingredient Guide", to: "/ingredients" },
+  { label: "Search", to: "/search" },
+] as const;
+
 
 export function Footer() {
   return (
@@ -34,14 +37,15 @@ export function Footer() {
             <ul className="mt-4 space-y-2">
               {footerLinks.map((link) => (
                 <li key={link.label}>
-                  <a
-                    href={link.href}
+                  <Link
+                    to={link.to}
                     className="text-sm text-muted-foreground transition-colors hover:text-primary"
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
+
             </ul>
           </nav>
         </div>
