@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as SearchRouteImport } from './routes/search'
 import { Route as FestivalsIndexRouteImport } from './routes/festivals.index'
 import { Route as FestivalsFestivalIdRouteImport } from './routes/festivals.$festivalId'
 import { Route as IngredientsIndexRouteImport } from './routes/ingredients.index'
@@ -22,6 +23,11 @@ import { Route as StatesStateIdRouteImport } from './routes/states.$stateId'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SearchRoute = SearchRouteImport.update({
+  id: '/search',
+  path: '/search',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FestivalsIndexRoute = FestivalsIndexRouteImport.update({
@@ -67,6 +73,7 @@ const StatesStateIdRoute = StatesStateIdRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/search': typeof SearchRoute
   '/festivals/$festivalId': typeof FestivalsFestivalIdRoute
   '/ingredients/$ingredientId': typeof IngredientsIngredientIdRoute
   '/recipes/$recipeId': typeof RecipesRecipeIdRoute
@@ -78,6 +85,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/search': typeof SearchRoute
   '/festivals/$festivalId': typeof FestivalsFestivalIdRoute
   '/ingredients/$ingredientId': typeof IngredientsIngredientIdRoute
   '/recipes/$recipeId': typeof RecipesRecipeIdRoute
@@ -90,6 +98,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/search': typeof SearchRoute
   '/festivals/$festivalId': typeof FestivalsFestivalIdRoute
   '/ingredients/$ingredientId': typeof IngredientsIngredientIdRoute
   '/recipes/$recipeId': typeof RecipesRecipeIdRoute
@@ -103,6 +112,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/search'
     | '/festivals/$festivalId'
     | '/ingredients/$ingredientId'
     | '/recipes/$recipeId'
@@ -114,6 +124,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/search'
     | '/festivals/$festivalId'
     | '/ingredients/$ingredientId'
     | '/recipes/$recipeId'
@@ -125,6 +136,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/search'
     | '/festivals/$festivalId'
     | '/ingredients/$ingredientId'
     | '/recipes/$recipeId'
@@ -137,6 +149,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  SearchRoute: typeof SearchRoute
   FestivalsFestivalIdRoute: typeof FestivalsFestivalIdRoute
   IngredientsIngredientIdRoute: typeof IngredientsIngredientIdRoute
   RecipesRecipeIdRoute: typeof RecipesRecipeIdRoute
@@ -154,6 +167,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/search': {
+      id: '/search'
+      path: '/search'
+      fullPath: '/search'
+      preLoaderRoute: typeof SearchRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/festivals/': {
@@ -217,6 +237,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  SearchRoute: SearchRoute,
   FestivalsFestivalIdRoute: FestivalsFestivalIdRoute,
   IngredientsIngredientIdRoute: IngredientsIngredientIdRoute,
   RecipesRecipeIdRoute: RecipesRecipeIdRoute,
