@@ -10,33 +10,141 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as FestivalsIndexRouteImport } from './routes/festivals.index'
+import { Route as FestivalsFestivalIdRouteImport } from './routes/festivals.$festivalId'
+import { Route as IngredientsIndexRouteImport } from './routes/ingredients.index'
+import { Route as IngredientsIngredientIdRouteImport } from './routes/ingredients.$ingredientId'
+import { Route as RecipesIndexRouteImport } from './routes/recipes.index'
+import { Route as RecipesRecipeIdRouteImport } from './routes/recipes.$recipeId'
+import { Route as StatesIndexRouteImport } from './routes/states.index'
+import { Route as StatesStateIdRouteImport } from './routes/states.$stateId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FestivalsIndexRoute = FestivalsIndexRouteImport.update({
+  id: '/festivals/',
+  path: '/festivals/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FestivalsFestivalIdRoute = FestivalsFestivalIdRouteImport.update({
+  id: '/festivals/$festivalId',
+  path: '/festivals/$festivalId',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IngredientsIndexRoute = IngredientsIndexRouteImport.update({
+  id: '/ingredients/',
+  path: '/ingredients/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IngredientsIngredientIdRoute = IngredientsIngredientIdRouteImport.update({
+  id: '/ingredients/$ingredientId',
+  path: '/ingredients/$ingredientId',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RecipesIndexRoute = RecipesIndexRouteImport.update({
+  id: '/recipes/',
+  path: '/recipes/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RecipesRecipeIdRoute = RecipesRecipeIdRouteImport.update({
+  id: '/recipes/$recipeId',
+  path: '/recipes/$recipeId',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StatesIndexRoute = StatesIndexRouteImport.update({
+  id: '/states/',
+  path: '/states/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StatesStateIdRoute = StatesStateIdRouteImport.update({
+  id: '/states/$stateId',
+  path: '/states/$stateId',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/festivals/$festivalId': typeof FestivalsFestivalIdRoute
+  '/ingredients/$ingredientId': typeof IngredientsIngredientIdRoute
+  '/recipes/$recipeId': typeof RecipesRecipeIdRoute
+  '/states/$stateId': typeof StatesStateIdRoute
+  '/festivals/': typeof FestivalsIndexRoute
+  '/ingredients/': typeof IngredientsIndexRoute
+  '/recipes/': typeof RecipesIndexRoute
+  '/states/': typeof StatesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/festivals/$festivalId': typeof FestivalsFestivalIdRoute
+  '/ingredients/$ingredientId': typeof IngredientsIngredientIdRoute
+  '/recipes/$recipeId': typeof RecipesRecipeIdRoute
+  '/states/$stateId': typeof StatesStateIdRoute
+  '/festivals': typeof FestivalsIndexRoute
+  '/ingredients': typeof IngredientsIndexRoute
+  '/recipes': typeof RecipesIndexRoute
+  '/states': typeof StatesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/festivals/$festivalId': typeof FestivalsFestivalIdRoute
+  '/ingredients/$ingredientId': typeof IngredientsIngredientIdRoute
+  '/recipes/$recipeId': typeof RecipesRecipeIdRoute
+  '/states/$stateId': typeof StatesStateIdRoute
+  '/festivals/': typeof FestivalsIndexRoute
+  '/ingredients/': typeof IngredientsIndexRoute
+  '/recipes/': typeof RecipesIndexRoute
+  '/states/': typeof StatesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/festivals/$festivalId'
+    | '/ingredients/$ingredientId'
+    | '/recipes/$recipeId'
+    | '/states/$stateId'
+    | '/festivals/'
+    | '/ingredients/'
+    | '/recipes/'
+    | '/states/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/festivals/$festivalId'
+    | '/ingredients/$ingredientId'
+    | '/recipes/$recipeId'
+    | '/states/$stateId'
+    | '/festivals'
+    | '/ingredients'
+    | '/recipes'
+    | '/states'
+  id:
+    | '__root__'
+    | '/'
+    | '/festivals/$festivalId'
+    | '/ingredients/$ingredientId'
+    | '/recipes/$recipeId'
+    | '/states/$stateId'
+    | '/festivals/'
+    | '/ingredients/'
+    | '/recipes/'
+    | '/states/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  FestivalsFestivalIdRoute: typeof FestivalsFestivalIdRoute
+  IngredientsIngredientIdRoute: typeof IngredientsIngredientIdRoute
+  RecipesRecipeIdRoute: typeof RecipesRecipeIdRoute
+  StatesStateIdRoute: typeof StatesStateIdRoute
+  FestivalsIndexRoute: typeof FestivalsIndexRoute
+  IngredientsIndexRoute: typeof IngredientsIndexRoute
+  RecipesIndexRoute: typeof RecipesIndexRoute
+  StatesIndexRoute: typeof StatesIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +156,75 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/festivals/': {
+      id: '/festivals/'
+      path: '/festivals'
+      fullPath: '/festivals/'
+      preLoaderRoute: typeof FestivalsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/festivals/$festivalId': {
+      id: '/festivals/$festivalId'
+      path: '/festivals/$festivalId'
+      fullPath: '/festivals/$festivalId'
+      preLoaderRoute: typeof FestivalsFestivalIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ingredients/': {
+      id: '/ingredients/'
+      path: '/ingredients'
+      fullPath: '/ingredients/'
+      preLoaderRoute: typeof IngredientsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ingredients/$ingredientId': {
+      id: '/ingredients/$ingredientId'
+      path: '/ingredients/$ingredientId'
+      fullPath: '/ingredients/$ingredientId'
+      preLoaderRoute: typeof IngredientsIngredientIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/recipes/': {
+      id: '/recipes/'
+      path: '/recipes'
+      fullPath: '/recipes/'
+      preLoaderRoute: typeof RecipesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/recipes/$recipeId': {
+      id: '/recipes/$recipeId'
+      path: '/recipes/$recipeId'
+      fullPath: '/recipes/$recipeId'
+      preLoaderRoute: typeof RecipesRecipeIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/states/': {
+      id: '/states/'
+      path: '/states'
+      fullPath: '/states/'
+      preLoaderRoute: typeof StatesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/states/$stateId': {
+      id: '/states/$stateId'
+      path: '/states/$stateId'
+      fullPath: '/states/$stateId'
+      preLoaderRoute: typeof StatesStateIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  FestivalsFestivalIdRoute: FestivalsFestivalIdRoute,
+  IngredientsIngredientIdRoute: IngredientsIngredientIdRoute,
+  RecipesRecipeIdRoute: RecipesRecipeIdRoute,
+  StatesStateIdRoute: StatesStateIdRoute,
+  FestivalsIndexRoute: FestivalsIndexRoute,
+  IngredientsIndexRoute: IngredientsIndexRoute,
+  RecipesIndexRoute: RecipesIndexRoute,
+  StatesIndexRoute: StatesIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
