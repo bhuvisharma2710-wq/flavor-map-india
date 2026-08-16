@@ -15,19 +15,20 @@ export function Hero() {
           </p>
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <a
-              href="#states"
+            <Link
+              to="/recipes"
               className="inline-flex items-center justify-center rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:bg-spice"
             >
               Explore Indian Cuisine
-            </a>
-            <a
-              href="#states"
+            </Link>
+            <Link
+              to="/states"
               className="inline-flex items-center justify-center rounded-full border border-accent px-6 py-3 text-sm font-semibold text-accent transition-colors hover:bg-accent hover:text-accent-foreground"
             >
               Discover by State
-            </a>
+            </Link>
           </div>
+
 
           <dl className="mt-12 grid max-w-md grid-cols-3 gap-4 border-t border-border pt-6">
             {[

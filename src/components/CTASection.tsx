@@ -1,4 +1,6 @@
+import { Link } from "@tanstack/react-router";
 import ctaImage from "@/assets/cta-spices.jpg";
+
 
 export function CTASection() {
   return (
@@ -18,12 +20,13 @@ export function CTASection() {
         <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-deep-foreground/80">
           Begin with a state, a festival or a single ingredient — and follow the story from there.
         </p>
-        <a
-          href="#states"
+        <Link
+          to="/states"
           className="mt-8 inline-flex items-center justify-center rounded-full bg-primary px-7 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:bg-spice"
         >
           Start Exploring
-        </a>
+        </Link>
+
       </div>
     </section>
   );
