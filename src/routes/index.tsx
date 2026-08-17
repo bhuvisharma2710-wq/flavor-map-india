@@ -10,7 +10,7 @@ import { IngredientCard } from "@/components/IngredientCard";
 import { VideoCard } from "@/components/VideoCard";
 import { CTASection } from "@/components/CTASection";
 import { Footer } from "@/components/Footer";
-import { states, festivals, ingredients, videos } from "@/data/homeData";
+import { states, homeFestivals, homeIngredients, videos } from "@/data/homeData";
 
 const title = "FlavorMap India — Explore Regional Indian Cuisine";
 const description =
