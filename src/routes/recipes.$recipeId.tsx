@@ -1,4 +1,5 @@
-import { createFileRoute, notFound, Link } from "@tanstack/react-router";
+import { createFileRoute, notFound } from "@tanstack/react-router";
+import { Link } from "@tanstack/react-router";
 import { Clock, Users, ChefHat } from "lucide-react";
 
 import { PageShell } from "@/components/PageShell";
