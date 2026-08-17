@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
@@ -10,7 +10,7 @@ import { IngredientCard } from "@/components/IngredientCard";
 import { VideoCard } from "@/components/VideoCard";
 import { CTASection } from "@/components/CTASection";
 import { Footer } from "@/components/Footer";
-import { states, festivals, ingredients, videos } from "@/data/homeData";
+import { states, homeFestivals, homeIngredients, videos } from "@/data/homeData";
 
 const title = "FlavorMap India — Explore Regional Indian Cuisine";
 const description =
@@ -58,10 +58,16 @@ function Home() {
               description="Some dishes appear only once a year. These are the sweets and feasts that mark India's festival calendar."
             />
             <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              {festivals.map((festival) => (
+              {homeFestivals.map((festival) => (
                 <FestivalCard key={festival.id} festival={festival} />
               ))}
             </div>
+            <div className="mt-10 text-center">
+              <Link to="/festivals" className="font-semibold text-primary hover:text-spice">
+                See all eight festivals →
+              </Link>
+            </div>
+
           </div>
         </section>
 
@@ -75,10 +81,16 @@ function Home() {
             description="Learn about ingredients that give India's regional cuisines their distinctive flavours."
           />
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {ingredients.map((ingredient) => (
+            {homeIngredients.map((ingredient) => (
               <IngredientCard key={ingredient.id} ingredient={ingredient} />
             ))}
           </div>
+          <div className="mt-10 text-center">
+            <Link to="/ingredients" className="font-semibold text-primary hover:text-spice">
+              Open the full ingredient guide →
+            </Link>
+          </div>
+
         </section>
 
         {/* Traditional cooking videos */}
