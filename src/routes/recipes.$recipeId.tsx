@@ -5,6 +5,7 @@ import { Clock, Users, ChefHat } from "lucide-react";
 import { PageShell } from "@/components/PageShell";
 import { PageHeader } from "@/components/PageHeader";
 import { RecipeCard } from "@/components/RecipeCard";
+import { RecipeVideo } from "@/components/RecipeVideo";
 import { getRecipe, getState, getFestival, getIngredient, recipes } from "@/data/content";
 
 export const Route = createFileRoute("/recipes/$recipeId")({
@@ -36,7 +37,8 @@ export const Route = createFileRoute("/recipes/$recipeId")({
 
 function RecipeDetail() {
   const { recipeId } = Route.useParams();
-  const recipe = getRecipe(recipeId)!;
+  const recipe = getRecipe(recipeId);
+  if (!recipe) return <RecipeNotFound />;
   const state = recipe.stateId ? getState(recipe.stateId) : undefined;
   const festival = recipe.festivalId ? getFestival(recipe.festivalId) : undefined;
   const linkedIngredients = recipe.ingredientIds
@@ -168,6 +170,8 @@ function RecipeDetail() {
             </div>
           </div>
         </div>
+
+        <RecipeVideo recipeId={recipe.id} recipeName={recipe.name} />
       </section>
 
       {related.length > 0 && (
