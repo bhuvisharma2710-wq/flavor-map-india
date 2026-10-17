@@ -25,6 +25,8 @@ export const Route = createFileRoute("/states/$stateId")({
         { name: "description", content: loaderData.description },
         { property: "og:title", content: title },
         { property: "og:description", content: loaderData.description },
+        { property: "og:type", content: "article" },
+        { name: "twitter:card", content: "summary_large_image" },
       ],
     };
   },
